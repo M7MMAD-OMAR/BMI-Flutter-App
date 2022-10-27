@@ -13,8 +13,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "DMI APP",
-      theme: ThemeData(primarySwatch: Colors.green),
-      home: Result(isMale: true, height: 200, wdith: 20),
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        fontFamily: 'Tamil Sangam MN',
+        canvasColor: Colors.black87,
+        textTheme: const TextTheme(
+          headline3: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.w500,
+            color: Colors.white70,
+          ),
+        ),
+      ),
+      home: Result(isMale: true, age: 200, result: 27),
     );
   }
 }
