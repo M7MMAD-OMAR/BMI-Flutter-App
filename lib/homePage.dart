@@ -14,6 +14,79 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text("App Bar DMI"),
       ),
+      body: SafeArea(
+        child: Center(
+          child: Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(30),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(Icons.male),
+                      label: const Text("Male"),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.all(50),
+                      ),
+                    ),
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(Icons.male),
+                      label: const Text("Male"),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.all(50),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(Icons.male),
+                      label: const Text("Male"),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.all(50),
+                      ),
+                    ),
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(Icons.male),
+                      label: const Text("Male"),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.all(50),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(Icons.male),
+                      label: const Text("Male"),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.all(50),
+                      ),
+                    ),
+                    ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: const Icon(Icons.male),
+                      label: const Text("Male"),
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.all(50),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
