@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:dmi/main.dart';
+import 'package:dmi/result.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -11,7 +14,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   late bool isMale = true;
   late int age = 15;
-  late int height = 180;
+  late int weight = 180;
+  late double heightVal = 200;
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +23,13 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text("App Bar DMI"),
       ),
-
       body: SafeArea(
         child: Center(
           child: Container(
-            padding: const EdgeInsets.all(30),
             child: Column(
               children: <Widget>[
                 Expanded(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Expanded(
                         child: ElevatedButton.icon(
@@ -68,21 +69,59 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                 ),
+
                 Expanded(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Expanded(
+                        child: Container(
+                          color: Colors.amber[400],
+                          margin: const EdgeInsets.all(10),
+                          child:  TextButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.all(50),
+                            ),
+                            child: Column(
+                              children: <Widget>[
+                                const Text("Weight"),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                                  textBaseline: TextBaseline.alphabetic,
+                                  children: <Widget>[
+                                    Text(heightVal.toStringAsFixed(1),
+                                      style: Theme.of(context).textTheme.headline2,),
+                                    Text("CM", style: Theme.of(context).textTheme.bodySmall,),
+                                  ],
+                                ),
+                                Slider(
+                                    value: heightVal,
+                                    min: 0,
+                                    max: 240,
+                                    onChanged: (newValue) => setState(() => heightVal = newValue),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                Expanded(
+                  child: Row(
                     children: <Widget>[
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {},
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              const SizedBox(
-                                height: 20,
-                              ),
                               const Text("Height"),
                               Text(
-                                "$height",
+                                "$weight",
                                 style: Theme.of(context).textTheme.headline2,
                               ),
                               Row(
@@ -93,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     heroTag: "Height plus",
                                     onPressed: () {
                                       setState(() {
-                                        ++height;
+                                        ++weight;
                                       });
                                     },
                                     backgroundColor: Colors.deepPurpleAccent,
@@ -103,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   FloatingActionButton(
                                     onPressed: () {
                                       setState(() {
-                                        --height;
+                                        --weight;
                                       });
                                     },
                                     backgroundColor: Colors.deepPurpleAccent,
@@ -112,9 +151,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     child: const Icon(Icons.remove),
                                   ),
                                 ],
-                              ),
-                              const SizedBox(
-                                height: 20,
                               ),
                             ],
                           ),
@@ -127,10 +163,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: ElevatedButton(
                           onPressed: () {},
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              const SizedBox(
-                                height: 20,
-                              ),
                               const Text("Age"),
                               Text(
                                 "$age",
@@ -164,14 +198,26 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 20,
-                              ),
                             ],
                           ),
                         ),
                       ),
                     ],
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height / 14,
+                  margin: const EdgeInsets.only(top: 30),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        double result = weight / pow(heightVal, 2);
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => Result(isMale: isMale, result: result, age: age)));
+                      });
+                    },
+                    child: const Text("Calculate"),
                   ),
                 ),
               ],
