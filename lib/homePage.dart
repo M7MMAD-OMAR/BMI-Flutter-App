@@ -8,6 +8,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late bool isMale = true;
+  late int age = 15;
+  late int height = 180;
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,68 +30,69 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    ElevatedButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(Icons.male),
-                      label: const Text("Male"),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.all(50),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          setState(() {
+                            isMale = true;
+                          });
+                        },
+                        icon: const Icon(
+                          Icons.male,
+                        ),
+                        label: const Text("Male"),
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.all(50),
+                          primary: isMale ? Colors.purple : Colors.green,
+                        ),
                       ),
                     ),
-                    ElevatedButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(Icons.male),
-                      label: const Text("Male"),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.all(50),
+                    const SizedBox(
+                      width: 70,
+                    ),
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          setState(() {
+                            isMale = false;
+                          });
+                        },
+                        icon: const Icon(Icons.male),
+                        label: const Text("Female"),
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.all(50),
+                          primary: isMale ? Colors.green : Colors.purple,
+                        ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
+                  height: 70,
+                ),
+                const SizedBox(
                   height: 70,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    ElevatedButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(Icons.male),
-                      label: const Text("Male"),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.all(50),
+                    Expanded(
+                      child: Column(
+                        children: <Widget>[
+                          const Text("Height"),
+                          Text("$height"),
+                        ],
                       ),
                     ),
-                    ElevatedButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(Icons.male),
-                      label: const Text("Male"),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.all(50),
-                      ),
+                    const SizedBox(
+                      width: 70,
                     ),
-                  ],
-                ),
-                SizedBox(
-                  height: 70,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    ElevatedButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(Icons.male),
-                      label: const Text("Male"),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.all(50),
-                      ),
-                    ),
-                    ElevatedButton.icon(
-                      onPressed: () {},
-                      icon: const Icon(Icons.male),
-                      label: const Text("Male"),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.all(50),
+                    Expanded(
+                      child: Column(
+                        children: <Widget>[
+                          const Text("Age"),
+                          Text("$age"),
+                        ],
                       ),
                     ),
                   ],
