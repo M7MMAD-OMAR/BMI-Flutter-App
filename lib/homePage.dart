@@ -19,6 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text("App Bar DMI"),
       ),
+
       body: SafeArea(
         child: Center(
           child: Container(
