@@ -1,7 +1,3 @@
-import 'dart:math';
-
-import 'package:dmi/main.dart';
-import 'package:dmi/result.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -24,43 +20,27 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text("App Bar DMI"),
       ),
       body: SafeArea(
-        child: Container(
-          child: ElevatedButton(
-            onPressed: () {
-              AlertDialog alert = AlertDialog(
-                backgroundColor: Colors.lime,
-                title: const Text("Title Dialog"),
-                alignment: Alignment.center,
-                content: SizedBox(
-                  height: 200,
-                  child: Column(
-                    children: <Widget>[
-                      const Divider(
-                        color: Colors.black,
-                      ),
-                      Text("This is simple text"),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: const Text("Close"),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-
-              showDialog(
-                  context: context,
-                  barrierColor: Colors.green.withOpacity(0.7),
-                  barrierDismissible: false,
-                  builder: (BuildContext ctx) {
-                    return alert;
-                  });
-            },
-            child: const Text("Click Me!"),
-          ),
+        child: ElevatedButton(
+          onPressed: () {
+            SnackBar snackBar = SnackBar(
+              content: const Text("Hi I'm Snack Bar"),
+              backgroundColor: Colors.green,
+              padding: const EdgeInsets.all(20),
+              duration: const Duration(seconds: 55),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              action: SnackBarAction(
+                label: 'Snack bar action',
+                textColor: Colors.black,
+                onPressed: () {
+                  print("From Snack Bar action");
+                },
+              ),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          },
+          child: const Text("Snack Bar!"),
         ),
       ),
     );
