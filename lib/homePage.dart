@@ -24,204 +24,42 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text("App Bar DMI"),
       ),
       body: SafeArea(
-        child: Center(
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                Expanded(
-                  child: Row(
+        child: Container(
+          child: ElevatedButton(
+            onPressed: () {
+              AlertDialog alert = AlertDialog(
+                backgroundColor: Colors.lime,
+                title: const Text("Title Dialog"),
+                alignment: Alignment.center,
+                content: SizedBox(
+                  height: 200,
+                  child: Column(
                     children: <Widget>[
-                      Expanded(
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            setState(() {
-                              isMale = true;
-                            });
-                          },
-                          icon: const Icon(
-                            Icons.male,
-                          ),
-                          label: const Text("Male"),
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.all(50),
-                            primary: isMale ? Colors.purple : Colors.green,
-                          ),
-                        ),
+                      const Divider(
+                        color: Colors.black,
                       ),
-                      const SizedBox(
-                        width: 70,
-                      ),
-                      Expanded(
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            setState(() {
-                              isMale = false;
-                            });
-                          },
-                          icon: const Icon(Icons.male),
-                          label: const Text("Female"),
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.all(50),
-                            primary: isMale ? Colors.green : Colors.purple,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                Expanded(
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Container(
-                          color: Colors.amber[400],
-                          margin: const EdgeInsets.all(10),
-                          child:  TextButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.all(50),
-                            ),
-                            child: Column(
-                              children: <Widget>[
-                                const Text("Weight"),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                                  textBaseline: TextBaseline.alphabetic,
-                                  children: <Widget>[
-                                    Text(heightVal.toStringAsFixed(1),
-                                      style: Theme.of(context).textTheme.headline2,),
-                                    Text("CM", style: Theme.of(context).textTheme.bodySmall,),
-                                  ],
-                                ),
-                                Slider(
-                                    value: heightVal,
-                                    min: 0,
-                                    max: 240,
-                                    onChanged: (newValue) => setState(() => heightVal = newValue),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                Expanded(
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
+                      Text("This is simple text"),
+                      SizedBox(
+                        width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {},
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              const Text("Height"),
-                              Text(
-                                "$weight",
-                                style: Theme.of(context).textTheme.headline2,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  FloatingActionButton(
-                                    heroTag: "Height plus",
-                                    onPressed: () {
-                                      setState(() {
-                                        ++weight;
-                                      });
-                                    },
-                                    backgroundColor: Colors.deepPurpleAccent,
-                                    mini: true,
-                                    child: const Icon(Icons.add),
-                                  ),
-                                  FloatingActionButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        --weight;
-                                      });
-                                    },
-                                    backgroundColor: Colors.deepPurpleAccent,
-                                    heroTag: "Height minus",
-                                    mini: true,
-                                    child: const Icon(Icons.remove),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 70,
-                      ),
-                      Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              const Text("Age"),
-                              Text(
-                                "$age",
-                                style: Theme.of(context).textTheme.headline2,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  FloatingActionButton(
-                                    heroTag: "Height plus",
-                                    onPressed: () {
-                                      setState(() {
-                                        ++age;
-                                      });
-                                    },
-                                    backgroundColor: Colors.deepPurpleAccent,
-                                    mini: true,
-                                    child: const Icon(Icons.add),
-                                  ),
-                                  FloatingActionButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        --age;
-                                      });
-                                    },
-                                    backgroundColor: Colors.deepPurpleAccent,
-                                    heroTag: "Height minus",
-                                    mini: true,
-                                    child: const Icon(Icons.remove),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: const Text("Close"),
                         ),
                       ),
                     ],
                   ),
                 ),
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height / 14,
-                  margin: const EdgeInsets.only(top: 30),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        double result = weight / pow(heightVal, 2);
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (_) => Result(isMale: isMale, result: result, age: age)));
-                      });
-                    },
-                    child: const Text("Calculate"),
-                  ),
-                ),
-              ],
-            ),
+              );
+
+              showDialog(
+                  context: context,
+                  barrierColor: Colors.green.withOpacity(0.7),
+                  barrierDismissible: false,
+                  builder: (BuildContext ctx) {
+                    return alert;
+                  });
+            },
+            child: const Text("Click Me!"),
           ),
         ),
       ),

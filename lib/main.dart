@@ -28,32 +28,11 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.w900,
             color: Colors.black,
           ),
-
         ),
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("App Bar"),
-        ),
-        body: Container(
-          child: FloatingActionButton(
-            onPressed: (){
-              Fluttertoast.showToast(
-                  msg: "This is Center Short Toast",
-                  toastLength: Toast.LENGTH_LONG,
-                  gravity: ToastGravity.BOTTOM,
-                  timeInSecForIosWeb: 2,
-                  backgroundColor: Colors.purple,
-                  textColor: Colors.white,
-                  fontSize: 16.0,
-              );
-            },
-            child: const  Icon(Icons.add),
-          ),
-        ),
+        body: MyHomePage(),
       ),
     );
   }
 }
-
-
