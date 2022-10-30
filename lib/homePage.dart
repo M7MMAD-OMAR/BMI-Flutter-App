@@ -20,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text("App Bar DMI"),
       ),
       body: SafeArea(
-        child: ,
+        child: Container(),
       ),
     );
   }
