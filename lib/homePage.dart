@@ -20,28 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text("App Bar DMI"),
       ),
       body: SafeArea(
-        child: ElevatedButton(
-          onPressed: () {
-            SnackBar snackBar = SnackBar(
-              content: const Text("Hi I'm Snack Bar"),
-              backgroundColor: Colors.green,
-              padding: const EdgeInsets.all(20),
-              duration: const Duration(seconds: 55),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              action: SnackBarAction(
-                label: 'Snack bar action',
-                textColor: Colors.black,
-                onPressed: () {
-                  print("From Snack Bar action");
-                },
-              ),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          },
-          child: const Text("Snack Bar!"),
-        ),
+        child: ,
       ),
     );
   }
